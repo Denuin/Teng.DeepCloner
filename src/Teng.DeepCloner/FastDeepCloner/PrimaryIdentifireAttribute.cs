@@ -1,4 +1,6 @@
-﻿namespace FastDeepCloner
+﻿using System;
+
+namespace FastDeepCloner
 {
     /// <summary>
     /// Incase you have circular references in some object

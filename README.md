@@ -34,7 +34,8 @@ Fast, low-allocation ports of List, Dictionary, HashSet, Stack, and Queue using 
 
 
 ## Version log
-
+ - 1.0.1 (2024-10-31)
+    - Platform support : net462, net481, net6.0, net8.0
  - 1.0.0 (2024-10-24)
     - First release
     - Based on `FastDeepCloner v1.3.6` and `Collections.Pooled v1.0.82`

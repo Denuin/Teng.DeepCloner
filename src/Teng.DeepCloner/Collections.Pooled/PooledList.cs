@@ -2,11 +2,14 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using System;
 using System.Buffers;
 using System.Collections;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
+using System.Threading;
 
 namespace Collections.Pooled
 {
@@ -1547,8 +1550,12 @@ namespace Collections.Pooled
 
         private static bool ShouldClear(ClearMode mode)
         {
-            return mode == ClearMode.Always
-                || (mode == ClearMode.Auto && RuntimeHelpers.IsReferenceOrContainsReferences<T>());
+#if NET6_0_OR_GREATER
+           return mode == ClearMode.Always
+                    || (mode == ClearMode.Auto && RuntimeHelpers.IsReferenceOrContainsReferences<T>());
+#else
+            return mode != ClearMode.Never;
+#endif
         }
 
         /// <summary>

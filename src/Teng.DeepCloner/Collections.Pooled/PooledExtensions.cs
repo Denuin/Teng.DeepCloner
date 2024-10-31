@@ -1,4 +1,7 @@
-﻿namespace Collections.Pooled
+﻿using System;
+using System.Collections.Generic;
+
+namespace Collections.Pooled
 {
     /// <summary>
     /// Extension methods for creating pooled collections.

@@ -1,4 +1,7 @@
-﻿namespace Collections.Pooled
+﻿using System;
+using System.Collections.Generic;
+
+namespace Collections.Pooled
 {
     /// <summary>
     /// Represents a read-only collection of pooled elements that can be accessed by index

@@ -1,4 +1,6 @@
-﻿namespace FastDeepCloner
+﻿using System;
+
+namespace FastDeepCloner
 {
     /// <summary>
     /// Apply this to properties that cant be cloned, eg ImageSource and other controls.

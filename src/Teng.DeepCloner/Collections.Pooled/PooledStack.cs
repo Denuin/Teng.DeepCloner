@@ -10,12 +10,15 @@
 **
 =============================================================================*/
 
+using System;
 using System.Buffers;
 using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
+using System.Threading;
 
 namespace Collections.Pooled
 {
@@ -589,8 +592,12 @@ namespace Collections.Pooled
 
         private static bool ShouldClear(ClearMode mode)
         {
+#if NET6_0_OR_GREATER
             return mode == ClearMode.Always
                 || (mode == ClearMode.Auto && RuntimeHelpers.IsReferenceOrContainsReferences<T>());
+#else
+            return mode != ClearMode.Never;
+#endif
         }
 
         public void Dispose()

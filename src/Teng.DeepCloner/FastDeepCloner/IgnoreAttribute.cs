@@ -1,4 +1,6 @@
-﻿namespace FastDeepCloner
+﻿using System;
+
+namespace FastDeepCloner
 {
     /// <summary>
     /// Ignore Properties or Field that containe this attribute

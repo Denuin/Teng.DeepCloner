@@ -1,12 +1,15 @@
-﻿namespace FastDeepCloner
+﻿using System;
+using System.Collections.Generic;
+
+namespace FastDeepCloner
 {
     /// <summary>
     /// 特性集合
     /// </summary>
     public class AttributesCollections : List<Attribute>
     {
-        internal SafeValueType<Attribute, Attribute> ContainedAttributes = new();
-        internal SafeValueType<Type, Attribute> ContainedAttributesTypes = new();
+        internal SafeValueType<Attribute, Attribute> ContainedAttributes = new SafeValueType<Attribute, Attribute>();
+        internal SafeValueType<Type, Attribute> ContainedAttributesTypes = new SafeValueType<Type, Attribute>();
 
         /// <summary>
         /// 构造方法

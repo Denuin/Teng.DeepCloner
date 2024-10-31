@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
+    <TargetFrameworks>net462;net481;net6.0;net8.0</TargetFrameworks>
     <Nullable>enable</Nullable>
+    <LangVersion>8.0</LangVersion>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Authors>Denuin</Authors>
     <Description>A streamlined and optimized version based on FastDeepCloner v1.3.6 and Collections.Pooled v1.0.82</Description>
@@ -12,11 +12,10 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/Denuin/Teng.DeepCloner</RepositoryUrl>
     <PackageReleaseNotes></PackageReleaseNotes>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <FileVersion>1.0.1.0</FileVersion>
+    <Version>1.0.1</Version>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="Collections.Pooled\" />
-  </ItemGroup>
 
   <ItemGroup>
     <None Include="..\..\icon.png">
@@ -27,6 +26,14 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.ValueTuple" Version="4.5.0" Condition="$(TargetFramework) == 'net462'" />
+    <PackageReference Include="System.Buffers" Version="4.5.1" Condition="$(TargetFramework) == 'net462'" />
+    <PackageReference Include="System.Memory" Version="4.5.5" Condition="$(TargetFramework) == 'net462'" />
+    <PackageReference Include="System.Buffers" Version="4.5.1" Condition="$(TargetFramework) == 'net481'" />
+    <PackageReference Include="System.Memory" Version="4.5.5" Condition="$(TargetFramework) == 'net481'" />
   </ItemGroup>
 
 </Project>

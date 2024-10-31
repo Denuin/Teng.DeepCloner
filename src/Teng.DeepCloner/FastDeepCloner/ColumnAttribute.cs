@@ -1,4 +1,6 @@
-﻿namespace FastDeepCloner
+﻿using System;
+
+namespace FastDeepCloner
 {
     /// <summary>
     /// This attribute is used be CloneTo Method

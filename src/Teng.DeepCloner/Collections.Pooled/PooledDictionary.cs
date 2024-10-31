@@ -2,11 +2,14 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using System;
 using System.Buffers;
 using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
+using System.Threading;
 
 namespace Collections.Pooled
 {
@@ -1471,14 +1474,22 @@ namespace Collections.Pooled
 
         private static bool ShouldClearKey(ClearMode mode)
         {
+#if NET6_0_OR_GREATER
             return mode == ClearMode.Always
                 || (mode == ClearMode.Auto && RuntimeHelpers.IsReferenceOrContainsReferences<TKey>());
+#else
+            return mode != ClearMode.Never;
+#endif
         }
 
         private static bool ShouldClearValue(ClearMode mode)
         {
-            return mode == ClearMode.Always
+#if NET6_0_OR_GREATER
+          return mode == ClearMode.Always
                 || (mode == ClearMode.Auto && RuntimeHelpers.IsReferenceOrContainsReferences<TValue>());
+#else
+            return mode != ClearMode.Never;
+#endif
         }
 
         private static bool IsCompatibleKey(object key)

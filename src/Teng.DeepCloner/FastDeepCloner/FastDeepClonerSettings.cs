@@ -1,4 +1,5 @@
-﻿using static FastDeepCloner.Extensions;
+﻿using System;
+using static FastDeepCloner.Extensions;
 
 namespace FastDeepCloner
 {

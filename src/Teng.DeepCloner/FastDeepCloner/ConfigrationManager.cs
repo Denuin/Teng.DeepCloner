@@ -1,4 +1,6 @@
-﻿namespace FastDeepCloner
+﻿using System;
+
+namespace FastDeepCloner
 {
     /// <summary>
     /// globa ConfigrationManager, for managing the library settings

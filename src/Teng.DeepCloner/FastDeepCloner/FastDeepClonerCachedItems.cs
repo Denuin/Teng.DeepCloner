@@ -1,6 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
@@ -14,20 +17,20 @@ namespace FastDeepCloner
 
         internal delegate object ObjectActivatorWithParameters(params object[] args);
 
-        private static readonly SafeValueType<Type, SafeValueType<string, IFastDeepClonerProperty>> CachedFields = new();
-        private static readonly SafeValueType<Type, SafeValueType<string, IFastDeepClonerProperty>> CachedPropertyInfo = new();
-        private static readonly SafeValueType<Type, Type> CachedTypes = new();
-        private static readonly SafeValueType<string, Func<object[], object>> CachedConstructorWithParameter = new();
-        private static readonly SafeValueType<string, Func<object>> CachedConstructor = new();
-        private static readonly SafeValueType<string, ObjectActivator> CachedDynamicMethod = new();
-        private static readonly SafeValueType<string, ObjectActivatorWithParameters> CachedDynamicMethodWithParameters = new();
-        private static readonly SafeValueType<string, ConstructorInfo> ConstructorInfo = new();
-        private static readonly SafeValueType<Type, MethodInfo> ProxyTypesPropertyChanged = new();
-        private static readonly SafeValueType<string, Assembly> CachedAssembly = new();
-        private static readonly SafeValueType<string, Type> CachedStringTypes = new();
-        private static readonly SafeValueType<string, Type> CachedConvertedObjectToInterface = new();
-        private static readonly SafeValueType<Type, IFastDeepClonerProperty> CachedFastDeepClonerIdentifier = new();
-        private static readonly SafeValueType<Type, Type> CachedIListInternalTypes = new();
+        private static readonly SafeValueType<Type, SafeValueType<string, IFastDeepClonerProperty>> CachedFields = new SafeValueType<Type, SafeValueType<string, IFastDeepClonerProperty>>();
+        private static readonly SafeValueType<Type, SafeValueType<string, IFastDeepClonerProperty>> CachedPropertyInfo = new SafeValueType<Type, SafeValueType<string, IFastDeepClonerProperty>>();
+        private static readonly SafeValueType<Type, Type> CachedTypes = new SafeValueType<Type, Type>();
+        private static readonly SafeValueType<string, Func<object[], object>> CachedConstructorWithParameter = new SafeValueType<string, Func<object[], object>>();
+        private static readonly SafeValueType<string, Func<object>> CachedConstructor = new SafeValueType<string, Func<object>>();
+        private static readonly SafeValueType<string, ObjectActivator> CachedDynamicMethod = new SafeValueType<string, ObjectActivator>();
+        private static readonly SafeValueType<string, ObjectActivatorWithParameters> CachedDynamicMethodWithParameters = new SafeValueType<string, ObjectActivatorWithParameters>();
+        private static readonly SafeValueType<string, ConstructorInfo> ConstructorInfo = new SafeValueType<string, ConstructorInfo>();
+        private static readonly SafeValueType<Type, MethodInfo> ProxyTypesPropertyChanged = new SafeValueType<Type, MethodInfo>();
+        private static readonly SafeValueType<string, Assembly> CachedAssembly = new SafeValueType<string, Assembly>();
+        private static readonly SafeValueType<string, Type> CachedStringTypes = new SafeValueType<string, Type>();
+        private static readonly SafeValueType<string, Type> CachedConvertedObjectToInterface = new SafeValueType<string, Type>();
+        private static readonly SafeValueType<Type, IFastDeepClonerProperty> CachedFastDeepClonerIdentifier = new SafeValueType<Type, IFastDeepClonerProperty>();
+        private static readonly SafeValueType<Type, Type> CachedIListInternalTypes = new SafeValueType<Type, Type>();
         private static readonly CultureInfo Culture;
 
         static FastDeepClonerCachedItems()

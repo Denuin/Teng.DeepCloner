@@ -1,4 +1,6 @@
-﻿using System.Linq.Expressions;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Reflection;
 
 namespace FastDeepCloner
@@ -15,7 +17,7 @@ namespace FastDeepCloner
         /// <returns></returns>
         public delegate object CreateInstance(Type type);
 
-        private static readonly Dictionary<Type, int> TypeDict = new()
+        private static readonly Dictionary<Type, int> TypeDict = new Dictionary<Type, int>()
         {
          {typeof(int),0},
          {typeof(double),0},
